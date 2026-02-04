@@ -1,0 +1,44 @@
+{
+  "name": "boring-ssr-stack",
+  "type": "module",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "test": "node scripts/test.js",
+    "test-unit": "node scripts/test.js '**/test/unit/**/*.spec.js'",
+    "test-int": "node scripts/test.js '**/test/int/**/*.spec.js'",
+    "test-e2e": "node scripts/test.js '**/test/e2e/**/*.spec.js'",
+    "build": "turbo run build --env-mode=loose --log-prefix=none --cache=local:r,remote:r --no-daemon --concurrency=1",
+    "dev": "turbo run dev --env-mode=loose --log-prefix=none --no-daemon --cache=local:r,remote:r",
+    "lint": "eslint",
+    "format": "prettier --write \"**/*.{js,md}\" --no-daemon --cache=local:r,remote:r",
+    "typecheck": "tsc --project tsconfig.json",
+    "check": "pnpm lint && pnpm typecheck"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.24.0",
+    "@html-eslint/parser": "^0.52.0",
+    "@playwright/test": "1.51.1",
+    "@types/node": "22.14.0",
+    "eslint": "9.24.0",
+    "eslint-config-prettier": "10.1.1",
+    "eslint-plugin-vue": "10.0.0",
+    "globals": "16.0.0",
+    "lefthook": "2.0.2",
+    "prettier": "3.5.3",
+    "turbo": "2.5.4",
+    "typescript": "5.9.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "lefthook"
+    ]
+  },
+  "packageManager": "pnpm@10.15.1",
+  "dependencies": {
+    "@html-eslint/eslint-plugin": "^0.52.1"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "name": "ave-cicd-api",
+  "version": "2.0.0",
+  "description": "",
+  "type": "module",
+  "private": true,
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "rm -rf src/frontend/public && pnpm bundle-css && pnpm bundle-js && pnpm bundle-assets",
+    "build:watch": "concurrently -k \"pnpm bundle-assets-watch\" \"pnpm bundle-css-watch\" \"pnpm bundle-js-watch\" \"pnpm bundle-assets\"",
+    "bundle-assets": "node src/frontend/scripts/copy-files.js src/frontend/assets/**/* src/frontend/public",
+    "bundle-assets-watch": "node src/frontend/scripts/copy-files.js -w src/frontend/assets/**/* src/frontend/public",
+    "bundle-css": "pnpm dlx @tailwindcss/cli -i ./src/frontend/css/style.css -o ./src/frontend/public/style.css",
+    "bundle-css-watch": "pnpm dlx @tailwindcss/cli --watch -i ./src/frontend/css/style.css -o ./src/frontend/public/style.css",
+    "bundle-js": "rollup -c rollup.config.js",
+    "bundle-js-watch": "NODE_ENV=development rollup -c rollup.config.js --watch",
+    "dev": "NODE_ENV=development concurrently -k \"pnpm bundle-assets-watch\" \"pnpm bundle-css-watch\" \"pnpm bundle-js-watch\" \"nodemon src/server.js\""
+  },
+  "dependencies": {
+    "@fastify/aws-lambda": "5.1.4",
+    "@fastify/cors": "11.0.1",
+    "@fastify/formbody": "8.0.0",
+    "@fastify/jwt": "9.1.0",
+    "@fastify/static": "8.2.0",
+    "@fastify/view": "11.1.1",
+    "alpinejs": "3.15.0",
+    "env": "file:../shared/env",
+    "fastify": "5.3.3",
+    "fastify-plugin": "5.1.0",
+    "find": "0.3.0",
+    "handlebars": "4.7.8",
+    "htmx.org": "2.0.8",
+    "logger": "file:../shared/logger",
+    "nanoid": "5.1.5",
+    "tailwindcss": "4.1.18"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "16.0.2",
+    "@rollup/plugin-replace": "6.0.3",
+    "@tailwindcss/cli": "4.1.18",
+    "concurrently": "9.2.1",
+    "get-port": "7.1.0",
+    "minimatch": "10.1.1",
+    "node-fetch": "3.3.2",
+    "nodemon": "3.1.9",
+    "playwright": "1.51.1",
+    "rollup": "4.52.4"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src",
+      "../../packages"
+    ],
+    "ext": "js,json,yaml,html",
+    "ignore": [
+      "**/test/**"
+    ]
+  }
+}

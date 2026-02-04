@@ -1,0 +1,67 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "tasks": {
+    "lint": {},
+    "dev": {
+      "persistent": true
+    },
+    "install-gpu-driver": {},
+    "install-gpu-driver-staging": {},
+    "install-gpu-driver-production": {},
+    "bundle-assets-watch": {
+      "cache": false,
+      "persistent": true
+    },
+    "bundle-css-watch": {
+      "cache": false,
+      "persistent": true
+    },
+    "bundle-js-watch": {
+      "cache": false,
+      "persistent": true
+    },
+    "build-cicd": {},
+    "build-ave-release": {},
+    "build-ave-release-staging": {},
+    "build-ave-release-production": {},
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
+    },
+    "build-staging": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
+    },
+    "build-production": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
+    },
+    "test": {
+      "dependsOn": ["^build"]
+    },
+    "test-unit": {
+      "dependsOn": ["^build"]
+    },
+    "test-int": {
+      "dependsOn": ["^build"]
+    },
+    "test-e2e": {
+      "dependsOn": ["^build"]
+    },
+    "test-int-staging": {
+      "dependsOn": ["^build-staging"]
+    },
+    "test-e2e-staging": {
+      "dependsOn": ["^build-staging"]
+    },
+    "drop-db": {},
+    "drop-db-staging": {},
+    "update-prod-dump": {},
+    "import-prod-dump": {},
+    "import-prod-dump-staging": {},
+    "get-costs": {},
+    "create-release-latest-index": {},
+    "create-release-latest-index-staging": {},
+    "create-release-latest-index-prod": {}
+  }
+}

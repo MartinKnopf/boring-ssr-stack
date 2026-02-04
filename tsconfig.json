@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "noEmit": true,
+    "target": "ES2024",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2024", "DOM"],
+    "allowJs": true,
+    "checkJs": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true
+  },
+  "exclude": [
+    "**/node_modules",
+    "**/dist",
+    "**/packages/server/src/frontend/main.js",
+    "**/packages/server/src/frontend/public/**"
+  ],
+  "include": [
+    "packages/**/*.js",
+    "scripts/**/*.js"
+  ]
+}

@@ -1,0 +1,8 @@
+# LeftHook configuration file for Git hooks
+#
+#   Refer for explanation to following link:
+#   https://lefthook.dev/configuration/
+pre-commit:
+  jobs:
+    - name: check
+      run: pnpm check
